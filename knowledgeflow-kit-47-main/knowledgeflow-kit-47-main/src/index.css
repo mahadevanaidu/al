@@ -1,0 +1,345 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* DOB4DIE - Futuristic Learning Platform Design System */
+
+@layer base {
+  :root {
+    /* Dark mode first - Futuristic base */
+    --background: 222 84% 4%;
+    --foreground: 210 40% 98%;
+
+    /* Card system - Dark with subtle glow */
+    --card: 224 71% 8%;
+    --card-foreground: 210 40% 98%;
+
+    /* Interactive elements */
+    --popover: 224 71% 8%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Neon primary - Electric blue */
+    --primary: 212 100% 65%;
+    --primary-foreground: 222 84% 4%;
+    --primary-glow: 212 100% 75%;
+
+    /* Success and progress - Neon green */
+    --success: 142 100% 55%;
+    --success-foreground: 222 84% 4%;
+    --success-light: 142 100% 65%;
+
+    /* Learning accent - Electric purple */
+    --learning: 270 100% 70%;
+    --learning-foreground: 222 84% 4%;
+    --learning-light: 270 100% 80%;
+
+    /* Secondary elements */
+    --secondary: 217 32% 17%;
+    --secondary-foreground: 210 40% 98%;
+
+    /* Muted elements */
+    --muted: 217 32% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    /* Accent elements */
+    --accent: 217 32% 17%;
+    --accent-foreground: 212 100% 65%;
+
+    /* Warning and critical states */
+    --warning: 38 100% 60%;
+    --warning-foreground: 222 84% 4%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Form elements */
+    --border: 217 32% 17%;
+    --input: 217 32% 17%;
+    --ring: 212 100% 65%;
+
+    --radius: 1rem;
+
+    /* Futuristic gradients */
+    --gradient-learning: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--learning)));
+    --gradient-success: linear-gradient(135deg, hsl(var(--success)), hsl(var(--success-light)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--learning)) 50%, hsl(var(--primary-glow)) 100%);
+    --gradient-neon: linear-gradient(45deg, hsl(var(--primary) / 0.3), hsl(var(--learning) / 0.3));
+    
+    /* Neon shadows and glows */
+    --shadow-learning: 0 0 30px hsl(var(--primary) / 0.3), 0 10px 25px -5px hsl(var(--primary) / 0.1);
+    --shadow-card: 0 8px 32px hsl(222 84% 4% / 0.3), 0 0 20px hsl(var(--primary) / 0.05);
+    --shadow-elevated: 0 20px 40px hsl(222 84% 4% / 0.4), 0 0 30px hsl(var(--learning) / 0.1);
+    --shadow-neon: 0 0 20px hsl(var(--primary) / 0.4), 0 0 40px hsl(var(--learning) / 0.2);
+
+    /* Sidebar colors */
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  /* Light mode override (for users who prefer it) */
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 222 84% 4%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 84% 4%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 84% 4%;
+    --primary: 212 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 40% 98%;
+    --secondary-foreground: 222 84% 4%;
+    --muted: 210 40% 98%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 210 40% 98%;
+    --accent-foreground: 212 100% 50%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 212 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  /* Smooth transitions for all interactive elements */
+  * {
+    @apply transition-colors duration-200;
+  }
+
+  /* Custom scrollbar for dark theme */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-background;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary/50;
+  }
+}
+
+/* Enhanced animations and effects */
+@layer utilities {
+  /* Glow animation for logo and special elements */
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow {
+    from {
+      filter: drop-shadow(0 0 5px hsl(var(--primary) / 0.5));
+    }
+    to {
+      filter: drop-shadow(0 0 20px hsl(var(--primary) / 0.8)) drop-shadow(0 0 30px hsl(var(--learning) / 0.4));
+    }
+  }
+
+  /* Floating animation for background elements */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  /* Pulse animation for interactive elements */
+  .animate-pulse-slow {
+    animation: pulse-slow 3s ease-in-out infinite;
+  }
+
+  @keyframes pulse-slow {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+
+  /* Gradient text animation */
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient 3s ease infinite;
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  /* Hover effects */
+  .hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px hsl(222 84% 4% / 0.4), 0 0 30px hsl(var(--learning) / 0.2);
+  }
+
+  /* Glass morphism effect */
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Neon border effect */
+  .neon-border {
+    position: relative;
+  }
+
+  .neon-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    background: linear-gradient(45deg, hsl(var(--primary)), hsl(var(--learning)));
+    border-radius: inherit;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .neon-border:hover::before {
+    opacity: 1;
+  }
+
+  /* Shimmer effect for loading states */
+  .shimmer {
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  /* Improved focus states */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background;
+  }
+
+  /* Smooth transitions for all interactive elements */
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Accessibility enhancements */
+  .high-contrast {
+    --primary: 0 0% 100%;
+    --primary-foreground: 0 0% 0%;
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --border: 0 0% 50%;
+  }
+
+  .reduced-motion * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .large-text {
+    font-size: 1.2em;
+  }
+
+  .large-text h1 {
+    font-size: 2.5em;
+  }
+
+  .large-text h2 {
+    font-size: 2em;
+  }
+
+  .large-text h3 {
+    font-size: 1.75em;
+  }
+
+  /* Enhanced focus states for accessibility */
+  .focus-ring:focus-visible {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Skip to content link for screen readers */
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 4px;
+    z-index: 1000;
+  }
+
+  .skip-link:focus {
+    top: 6px;
+  }
+
+  /* High contrast mode adjustments */
+  @media (prefers-contrast: high) {
+    :root {
+      --primary: 0 0% 100%;
+      --background: 0 0% 0%;
+      --foreground: 0 0% 100%;
+    }
+  }
+
+  /* Reduced motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
